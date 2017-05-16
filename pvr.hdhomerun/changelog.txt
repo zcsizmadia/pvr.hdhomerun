@@ -1,3 +1,14 @@
+v3.0.4
+- set dependency versions automatic during build
+- removed never used kodi to addon functions
+- build system fixes
+
+v3.0.3
+- Fixed issue where if Guide's Affiliate is empty the channel would become an Unknown Channel
+
+v3.0.2
+- Correct channel Number if back-end provided channel number is used
+
 v3.0.0
 - Initial Kodi v18 version
 
