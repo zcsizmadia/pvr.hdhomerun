@@ -8,29 +8,35 @@ sudo: false
 matrix:
   include:
     - os: linux
-      compiler: gcc
-      env: CONFIG="Debug"
-    - os: linux
-      compiler: clang
-      env: CONFIG="Debug"
-    - os: osx
-      compiler: gcc
-      env: CONFIG="Debug"
-    - os: osx
-      compiler: clang
-      env: CONFIG="Debug"
-    - os: linux
-      compiler: gcc
-      env: CONFIG="Release"
-    - os: linux
-      compiler: clang
-      env: CONFIG="Release"
-    - os: osx
-      compiler: gcc
-      env: CONFIG="Release"
-    - os: osx
-      compiler: clang
-      env: CONFIG="Release"
+        env: CONFIG=Debug
+        jdk: oraclejdk8
+        language: android
+        sudo: required
+        android:
+          components:
+            - tools
+            - build-tools-25.0.2
+            - platform-tools
+            - extra-android-m2repository
+            - extra-google-android-support
+            - android-25
+
+#    - os: linux
+#      compiler: gcc
+#      env: CONFIG="Debug"
+#    - os: linux
+#      compiler: clang
+#      env: CONFIG="Debug"
+#    - os: osx
+#      env: CONFIG="Debug"
+#    - os: linux
+#      compiler: gcc
+#      env: CONFIG="Release"
+#    - os: linux
+#      compiler: clang
+#      env: CONFIG="Release"
+#    - os: osx
+#      env: CONFIG="Release"
     
 before_install:
   - gcc --version
