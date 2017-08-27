@@ -1,5 +1,8 @@
 language: cpp
 
+env:
+  - ADDON=pvr.hdhomerun
+
 sudo: false
 
 #
@@ -8,41 +11,22 @@ sudo: false
 matrix:
   include:
     - os: linux
-        env: CONFIG="Debug"
-        jdk: oraclejdk8
-        language: android
-        sudo: required
-        android:
-          components:
-            - tools
-            - build-tools-25.0.2
-            - platform-tools
-            - extra-android-m2repository
-            - extra-google-android-support
-            - android-25
-
-#    - os: linux
-#      compiler: gcc
-#      env: CONFIG="Debug"
-#    - os: linux
-#      compiler: clang
-#      env: CONFIG="Debug"
-#    - os: osx
-#      env: CONFIG="Debug"
-#    - os: linux
-#      compiler: gcc
-#      env: CONFIG="Release"
-#    - os: linux
-#      compiler: clang
-#      env: CONFIG="Release"
-#    - os: osx
-#      env: CONFIG="Release"
+      compiler: gcc
+      env: CONFIG="Debug"
+    - os: linux
+      compiler: clang
+      env: CONFIG="Debug"
+    - os: osx
+      env: CONFIG="Debug"
+    - os: linux
+      compiler: gcc
+      env: CONFIG="Release"
+    - os: linux
+      compiler: clang
+      env: CONFIG="Release"
+    - os: osx
+      env: CONFIG="Release"
     
-before_install:
-  - gcc --version
-  - cmake --version
-  - git --version
-
 #
 # The addon source is automatically checked out in $TRAVIS_BUILD_DIR,
 # we'll put the Kodi source on the same level
@@ -50,7 +34,7 @@ before_install:
 before_script:
   - cd $TRAVIS_BUILD_DIR/..
   - git clone --depth=1 https://github.com/xbmc/xbmc.git
-  - cd pvr.hdhomerun && mkdir build && cd build
-  - cmake -DADDONS_TO_BUILD=pvr.hdhomerun -DADDON_SRC_PREFIX=$TRAVIS_BUILD_DIR/.. -DCMAKE_BUILD_TYPE=$CONFIG -DCMAKE_INSTALL_PREFIX=$TRAVIS_BUILD_DIR/../xbmc/addons -DPACKAGE_ZIP=1 $TRAVIS_BUILD_DIR/../xbmc/cmake/addons
+  - cd $ADDON && mkdir build && cd build
+  - cmake -DADDONS_TO_BUILD=$ADDON -DADDON_SRC_PREFIX=$TRAVIS_BUILD_DIR/.. -DCMAKE_BUILD_TYPE=$CONFIG -DCMAKE_INSTALL_PREFIX=$TRAVIS_BUILD_DIR/../xbmc/addons -DPACKAGE_ZIP=1 $TRAVIS_BUILD_DIR/../xbmc/cmake/addons
 
 script: make
