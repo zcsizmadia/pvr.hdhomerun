@@ -20,8 +20,9 @@ os:
 env:
   global:
     - ADDON=pvr.hdhomerun
-  - CONFIG="Debug"
-  - CONFIG="Release"
+  matrix:
+    - CONFIG="Debug"
+    - CONFIG="Release"
     
 #matrix:
 #  include:
