@@ -9,19 +9,27 @@ sudo: false
 #
 # Define the build matrix
 #
+compiler:
+  - gcc
+  - clang
+  
+os:
+  - linux
+  - osx
+  
 env:
   global:
     - ADDON=pvr.hdhomerun
   - CONFIG="Debug"
   - CONFIG="Release"
     
-matrix:
-  include:
-    - os: linux
-      compiler: gcc
-    - os: linux
-      compiler: clang
-    - os: osx
+#matrix:
+#  include:
+#    - os: linux
+#      compiler: gcc
+#    - os: linux
+#      compiler: clang
+#    - os: osx
 
 #
 # The addon source is automatically checked out in $TRAVIS_BUILD_DIR,
