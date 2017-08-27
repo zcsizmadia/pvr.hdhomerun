@@ -10,23 +10,16 @@ sudo: false
 # Define the build matrix
 #
 matrix:
+  env:
+    - CONFIG="Debug"
+    - CONFIG="Release"
+    
   include:
     - os: linux
       compiler: gcc
-      env: CONFIG="Debug"
     - os: linux
       compiler: clang
-      env: CONFIG="Debug"
     - os: osx
-      env: CONFIG="Debug"
-    - os: linux
-      compiler: gcc
-      env: CONFIG="Release"
-    - os: linux
-      compiler: clang
-      env: CONFIG="Release"
-    - os: osx
-      env: CONFIG="Release"
 
 #
 # The addon source is automatically checked out in $TRAVIS_BUILD_DIR,
