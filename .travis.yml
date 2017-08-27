@@ -8,7 +8,7 @@ sudo: false
 matrix:
   include:
     - os: linux
-        env: CONFIG=Debug
+        env: CONFIG="Debug"
         jdk: oraclejdk8
         language: android
         sudo: required
